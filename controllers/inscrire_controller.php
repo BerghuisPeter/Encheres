@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include "functions.php";
+    include "../functions.php";
 
     if (isset($_POST['nom'])){$nom = $_POST['nom'];}
     if (isset($_POST['prenom'])){$prenom = $_POST['prenom'];}
@@ -35,21 +35,5 @@
             echo "ce login et déjà prise. <br/>";
     }
 
+    include ("../views/inscrire_view.php");
 ?>
-
-<html>
-<head>
-    <title>Créer Profile</title>
-</head>
-<body>
-<form action="creerProfile.php" method="post">
-    <input type="text" name="nom" placeholder="nom..."><br>
-    <input type="text" name="prenom" placeholder="prenom..."><br>
-    <input type="text" name="login" placeholder="login..."><br>
-    <input type="email" name="email" placeholder="email..."><br>
-    <input type="password" name="mdp" placeholder="mot de passe..."><br>
-    <button name="btnInscrire" type="submit">S'inscrire</button>
-</form>
-</body>
-</html>
-

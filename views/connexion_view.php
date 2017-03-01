@@ -1,20 +1,3 @@
-<?php
-session_start();
-
-include "functions.php";
-
-if (isset($_POST['btnConnecter']))
-{
-    if (verifieMotDePasse($_POST['login'], $_POST['mdp']))
-    {
-        echo "Valid";
-    }
-    else
-        echo "nope";
-}
-
-?>
-
 <html>
 <head>
     <title>login</title>
@@ -27,6 +10,6 @@ if (isset($_POST['btnConnecter']))
 </form>
 <br>
 <br>
-<a href="creerProfile.php"><button>créer profile</button></a>
+<a href="inscrire_controller.php"><button>créer profile</button></a>
 </body>
 </html>
