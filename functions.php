@@ -20,16 +20,7 @@ function connexionDB()
 
 function hashPwd($pwd)
 {
-
-
-
     return password_hash($pwd, PASSWORD_BCRYPT);
-}
-
-function generateSalt()
-{
-    $salt = uniqid(mt_rand(), true);
-    return $salt;
 }
 
 function verifieSiEmailPresentDansLaBDD($email)
