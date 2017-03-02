@@ -1,18 +1,33 @@
 <?php
-session_start();
+    session_start();
 
-include "../functions.php";
+    include "../Model.php";
 
-if (isset($_POST['btnConnecter']))
-{
-    if (verifieMotDePasse($_POST['login'], $_POST['mdp']))
+    $errorMessage = "";
+
+    if (isset($_POST['login'])){$login = $_POST['login'];}
+    if (isset($_POST['mdp'])){$mdp = $_POST['mdp'];}
+
+    if (isset($_POST['btnConnecter']))
     {
-        echo "Valid";
+        //ToDo vérifie que les champs sont pas vide
+
+        if (verifieMotDePasse($login, $mdp))
+        {
+            $personne = getPersonne($login);
+
+            $_SESSION['NomP'] = $personne['NomP'];
+            $_SESSION['PrenomP'] = $personne['PrenomP'];
+            $_SESSION['LoginP'] = $personne['LoginP'];
+            $_SESSION['EmailP'] = $personne['EmailP'];
+            $_SESSION['MdpP'] = $personne['MdpP'];
+            $_SESSION[RoleP] = $personne['RoleP'];
+
+            header("Location: accueil_controller.php");
+            die();
+        }
+        else
+            $errorMessage = "Nope, mdp ou login incorect";
     }
-    else
-        echo "nope";
-}
 
-include ("../views/connexion_view.php");
-
-?>
+    include ("../views/connexion_view.php");

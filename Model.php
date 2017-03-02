@@ -23,6 +23,7 @@ function hashPwd($pwd)
     return password_hash($pwd, PASSWORD_BCRYPT);
 }
 
+
 function verifieSiEmailPresentDansLaBDD($email)
 {
     $conn = connexionDB();
@@ -55,6 +56,22 @@ function verifieSiLoginPresentDansLaBDD($login)
     $conn = null;
 
     return false;
+}
+
+function getPersonne($login)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare('SELECT * FROM personne WHERE LoginP = "'.$login.'"');
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
 }
 
 function insertPersonne($nom, $prenom, $login, $email, $mdp)
@@ -91,4 +108,9 @@ function verifieMotDePasse($login, $mdp)
 
     if (password_verify($mdp, $mdpBD))
         return true;
+}
+
+function rechercheVente()
+{
+
 }

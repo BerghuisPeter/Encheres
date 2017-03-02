@@ -1,7 +1,9 @@
 <?php
     session_start();
 
-    include "../functions.php";
+    include "../Model.php";
+
+    $errorMessage = "";
 
     if (isset($_POST['nom'])){$nom = $_POST['nom'];}
     if (isset($_POST['prenom'])){$prenom = $_POST['prenom'];}
@@ -11,6 +13,8 @@
 
     if (isset($_POST['btnInscrire']))
     {
+        //ToDo vérifie que les champs sont pas vide
+
         $emailPresent = verifieSiEmailPresentDansLaBDD($email);
         $loginPresent = verifieSiLoginPresentDansLaBDD($login);
 
@@ -21,19 +25,19 @@
             $_SESSION['LoginP'] = $login;
             $_SESSION['EmailP'] = $email;
             $_SESSION['MdpP'] = $mdp;
+            $_SESSION[RoleP] = "propriétaire";
 
             insertPersonne($nom, $prenom, $login, $email, $mdp);
 
-            header('accueil.php');
+            header('Location: ../views/confirmationInscription.php');
             die();
         }
 
         if ($emailPresent)
-            echo "votre email est déjà présent dans la bdd <br/>";
+            $errorMessage = "Votre email est déjà présent dans la bdd<br/>";
 
         if ($loginPresent)
-            echo "ce login et déjà prise. <br/>";
+            $errorMessage = $errorMessage."Ce login et déjà prise.<br/>";
     }
 
     include ("../views/inscrire_view.php");
-?>
