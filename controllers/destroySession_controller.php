@@ -1,7 +1,7 @@
 <?php
 
-    session_start();
+session_start();
 
-    session_destroy();
+session_destroy();
 
-    header("Location: ../controllers/accueil_controller.php");
+header("Location: ../controllers/accueil_controller.php");

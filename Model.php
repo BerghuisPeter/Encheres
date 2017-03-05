@@ -110,7 +110,87 @@ function verifieMotDePasse($login, $mdp)
         return true;
 }
 
-function rechercheVente()
+function getIDPersonne($login)
 {
+    $conn = connexionDB();
 
+    $stmt = $conn->prepare('SELECT CodeP FROM personne WHERE LoginP = "' . $login . '"');
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
 }
+
+function getMesVentes($idPersonne)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare('SELECT * FROM vente WHERE CodeResp = ' . $idPersonne);
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetchAll();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
+
+function insertVente($nomV, $dateV, $tempsDV, $tempsFV, $idResp)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("INSERT INTO `vente`(`DateV`, `NomV`, `HeureDV`, `HeureFV`, `CodeResp`) VALUES (:dateV, :nomV, :heureD, :heureF, :idResp )");
+    $stmt->bindParam(':nomV', $nomV);
+    $stmt->bindParam(':dateV', $dateV);
+    $stmt->bindParam(':heureD', $tempsDV);
+    $stmt->bindParam(':heureF', $tempsFV);
+    $stmt->bindParam(':idResp', $idResp);
+
+    $stmt->execute();
+
+    $stmt = null;
+    $conn = null;
+}
+
+function getVente($CodeV)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare('SELECT * FROM vente WHERE CodeV = ' . $CodeV);
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
+
+function modifieVente($codeV, $nomV, $dateV, $tempsDV, $tempsFV)
+{
+    $conn = connexionDB();
+
+    echo $codeV . " " . $nomV . " " . $dateV . " " . $tempsDV . " " . $tempsFV;
+
+    $stmt = $conn->prepare("UPDATE vente SET  DateV = :dateV, NomV = :nomV, HeureDV = :heureD, HeureFV = :heureF WHERE CodeV = :codeV");
+    $stmt->bindParam(':nomV', $nomV);
+    $stmt->bindParam(':dateV', $dateV);
+    $stmt->bindParam(':heureD', $tempsDV);
+    $stmt->bindParam(':heureF', $tempsFV);
+    $stmt->bindParam(':codeV', $codeV);
+
+    $stmt->execute();
+
+    $stmt = null;
+    $conn = null;
+}
+
