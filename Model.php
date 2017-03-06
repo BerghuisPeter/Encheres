@@ -179,8 +179,6 @@ function modifieVente($codeV, $nomV, $dateV, $tempsDV, $tempsFV)
 {
     $conn = connexionDB();
 
-    echo $codeV . " " . $nomV . " " . $dateV . " " . $tempsDV . " " . $tempsFV;
-
     $stmt = $conn->prepare("UPDATE vente SET  DateV = :dateV, NomV = :nomV, HeureDV = :heureD, HeureFV = :heureF WHERE CodeV = :codeV");
     $stmt->bindParam(':nomV', $nomV);
     $stmt->bindParam(':dateV', $dateV);
@@ -194,3 +192,18 @@ function modifieVente($codeV, $nomV, $dateV, $tempsDV, $tempsFV)
     $conn = null;
 }
 
+function getProduitsDeLaVente($codeV)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("SELECT * FROM vendre, produit WHERE vendre.CodePr = produit.CodePr AND vendre.CodeV = " . $codeV);
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetchAll();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}

@@ -6,14 +6,13 @@
 <h1>Mes Ventes</h1>
 
 <?php
-$ventes = getMesVentes($_SESSION['CodeP']);
 if (!empty($ventes)) {
     echo "<form action='../controllers/vente_controller.php' method='post'><ul>";
     foreach ($ventes as $vente) {
         echo "<li>";
         echo $vente['NomV'];
         echo "<input type='hidden' value='" . $vente['CodeV'] . "' name='CodeV' />";
-        echo "  <button type='submit'> Gérer</button>";
+        echo "  <button type='submit'>Gérer</button>";
         echo "</li>";
     }
     echo "</ul></form>";

@@ -7,10 +7,10 @@ if ($_SESSION['RoleP'] != "responsable") {
     header("Location: accueil_controller.php");
 }
 
-$CodeV = $_POST['CodeV'];
+$codeV = $_POST['CodeV'];
 
 if (!isset($_POST['nomV'])) {
-    $vente = getVente($CodeV);
+    $vente = getVente($codeV);
     $nomV = $vente['NomV'];
     $dateV = $vente['DateV'];
     $heureDV = $vente['HeureDV'];
@@ -24,8 +24,10 @@ if (!isset($_POST['nomV'])) {
 
 $message = "";
 
+$produits = getProduitsDeLaVente($codeV);
+
 if (isset($_POST['btnModifieVente'])) {
-    modifieVente($CodeV, $nomV, $dateV, $heureDV, $heureFV);
+    modifieVente($codeV, $nomV, $dateV, $heureDV, $heureFV);
     $message = "modification enrégistrées";
 }
 

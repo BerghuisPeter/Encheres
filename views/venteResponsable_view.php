@@ -6,7 +6,7 @@
 <h1><?php echo $nomV ?></h1>
 
 <form action="../controllers/vente_controller.php" method="post">
-    <input type="hidden" name="CodeV" value="<?php echo $CodeV ?>">
+    <input type="hidden" name="CodeV" value="<?php echo $codeV ?>">
     nom <input type="text" name="nomV" placeholder="nom de la vente..." value="<?php echo $nomV ?>"><br>
     date <input type="text" name="dateV" placeholder="date et heure de la vente..." value="<?php echo $dateV ?>"><br>
     temps début <input type="text" name="heureDV" placeholder="heure de début de la vente"
@@ -19,6 +19,20 @@
 <hr>
 <br>
 
+<?php
+if (!empty($produits)) {
+    echo "<form action='../controllers/vente_controller.php' method='post'><ul>";
+    foreach ($produits as $produit) {
+        echo "<li>";
+        echo $produit['NomPr'];
+        echo "<input type='hidden' value='" . $produit['CodePr'] . "' name='CodePr' />";
+        echo "  <button type='submit'>Supprimer de la vente</button>";
+        echo "</li>";
+    }
+    echo "</ul></form>";
+} else
+    echo "pas de produits associer à cette vente";
+?>
 
 </body>
 </html>

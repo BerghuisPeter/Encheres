@@ -26,4 +26,6 @@ if (isset($_POST['btnAjouterVente'])) {
     insertVente($nomV, $dateV, $heureDV, $heureFV, $_SESSION['CodeP']);
 }
 
+$ventes = getMesVentes($_SESSION['CodeP']);
+
 include("../views/mesVentes_view.php");
