@@ -7,15 +7,14 @@
 
 <?php
 if (!empty($ventes)) {
-    echo "<form action='../controllers/vente_controller.php' method='post'><ul>";
+    echo "<ul>";
     foreach ($ventes as $vente) {
         echo "<li>";
-        echo $vente['NomV'];
-        echo "<input type='hidden' value='" . $vente['CodeV'] . "' name='CodeV' />";
-        echo "  <button type='submit'>Gérer</button>";
+        echo $vente['NomV'] . " " . $vente['CodeV'];
+        echo "  <a href='../controllers/vente_controller.php?CodeV=" . $vente['CodeV'] . "'><button type='button'>Gérer vente</button></a>";
         echo "</li>";
     }
-    echo "</ul></form>";
+    echo "</ul>";
 } else
     echo "pas de ventes créé";
 ?>

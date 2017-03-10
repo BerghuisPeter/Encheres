@@ -7,7 +7,8 @@ if ($_SESSION['RoleP'] != "responsable") {
     header("Location: accueil_controller.php");
 }
 
-$codeV = $_POST['CodeV'];
+$codeV = $_REQUEST['CodeV'];
+$message = "";
 
 if (!isset($_POST['nomV'])) {
     $vente = getVente($codeV);
@@ -22,13 +23,18 @@ if (!isset($_POST['nomV'])) {
     $heureFV = $_POST['heureFV'];
 }
 
-$message = "";
-
-$produits = getProduitsDeLaVente($codeV);
-
 if (isset($_POST['btnModifieVente'])) {
     modifieVente($codeV, $nomV, $dateV, $heureDV, $heureFV);
     $message = "modification enrégistrées";
 }
+
+if (isset($_POST['btnSupprimerProduitVente'])) {
+    $codePr = $_POST['CodePr'];
+
+    supprimerPRoduitDeLaVente($codePr, $codeV);
+    $message = "produit enlèver";
+}
+
+$produits = getProduitsDeLaVente($codeV);
 
 include("../views/venteResponsable_view.php");

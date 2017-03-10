@@ -207,3 +207,17 @@ function getProduitsDeLaVente($codeV)
 
     return $resultat;
 }
+
+function supprimerPRoduitDeLaVente($idProduit, $idVente)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("DELETE FROM vendre WHERE CodeV = :idVente AND CodePr = :idProduit");
+    $stmt->bindParam(':idProduit', $idProduit);
+    $stmt->bindParam(':idVente', $idVente);
+
+    $stmt->execute();
+
+    $stmt = null;
+    $conn = null;
+}
