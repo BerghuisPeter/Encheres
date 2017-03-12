@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2017 at 10:28 PM
+-- Generation Time: Mar 12, 2017 at 07:57 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.4
 
@@ -72,7 +72,7 @@ CREATE TABLE `personne` (
 
 INSERT INTO `personne` (`CodeP`, `NomP`, `PrenomP`, `EmailP`, `LoginP`, `MdpP`, `RoleP`) VALUES
 (2, 'Berghuis', 'Peter', 'peter.berghuis_13@hotmail.com', 'lolplayer101', '$2y$10$InZFBS68LLIGY.KopUpHW.wndVbUi.SR.6X7HQ8PwcnxfIzIguqiq', 'administrateur'),
-(5, 'trololo', 'joseph', 'test@test', 'josephLogin', '$2y$10$NCLl/6YOeDFJIZBBDUtDguHykAiqWh.t/k5Ry.hH6rMPZcUT4MvD2', 'responsable'),
+(5, 'dupont', 'joseph', 'test@test', 'josephLogin', '$2y$10$DJ7Z74YnmSjf6JysFUZE/eAIxg5BF43LAD7sF2eKaREnCqW4E1mrO', 'responsable'),
 (6, 'smith', 'john', 'test1@test', 'johnLogin', '$2y$10$bRNg2KKWI4u9L6EIjPX/GOHqOPzskonSPhm0QiS.Betxaa3RG119i', 'propriétaire'),
 (7, 'flammenwerfer', 'hans', 'test2@test', 'hansLogin', '$2y$10$QjbocJnqHOK9Tm2hAJ6PEOV9lLdlCuN4SxccKZvxmkbuZA/9SjJeW', 'participant');
 
@@ -97,7 +97,8 @@ CREATE TABLE `produit` (
 
 INSERT INTO `produit` (`CodePr`, `NomPr`, `PhotoPr`, `PrixInitial`, `CodeProp`) VALUES
 (1, 'dank meme - king rabbit', 'ressources/images/Capture.PNG', 50, 6),
-(2, 'dank meme - pepe', 'ressources/images/pepe.jpg', 20, 5);
+(2, 'dank meme - pepe', 'ressources/images/pepe.jpg', 20, 5),
+(3, 'dank meme - troll face', 'ressources/images/troll.jpg', 10, 6);
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,8 @@ CREATE TABLE `vendre` (
 --
 
 INSERT INTO `vendre` (`CodeV`, `CodePr`) VALUES
-(1, 1);
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,7 @@ ALTER TABLE `personne`
 -- AUTO_INCREMENT for table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `CodePr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CodePr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `vente`
 --
