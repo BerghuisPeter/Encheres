@@ -251,3 +251,31 @@ function addProduitAuVente($idProduit, $idVente)
     $stmt = null;
     $conn = null;
 }
+
+function updateProfil($codeP, $nom, $prenom, $newPwd)
+{
+    $conn = connexionDB();
+
+    if ($newPwd == "")
+        $stmt = $conn->prepare("UPDATE personne SET NomP=:nom, PrenomP=:prenom WHERE CodeP = :codeP");
+    else {
+        $mdp = hashPwd($newPwd);
+        echo $newPwd."<br>";
+        echo $mdp;
+        $stmt = $conn->prepare("UPDATE personne SET NomP=:nom, PrenomP=:prenom, MdpP=:mdp WHERE CodeP = :codeP");
+        $stmt->bindParam(':mdp', $mdp);
+        $_SESSION['MdpP'] = $mdp;
+    }
+
+    $stmt->bindParam(':codeP', $codeP);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':prenom', $prenom);
+
+    $stmt->execute();
+
+    $_SESSION['NomP'] = $nom;
+    $_SESSION['PrenomP'] = $prenom;
+
+    $stmt = null;
+    $conn = null;
+}
