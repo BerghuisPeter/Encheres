@@ -7,14 +7,14 @@
 
 <?php
 if (!empty($ventes)) {
-    echo "<ul>";
+    echo "<table>";
     foreach ($ventes as $vente) {
-        echo "<li>";
-        echo $vente['NomV'] . " " . $vente['CodeV'];
-        echo "  <a href='../controllers/vente_controller.php?CodeV=" . $vente['CodeV'] . "'><button type='button'>Gérer vente</button></a>";
-        echo "</li>";
+        echo "<tr>";
+        echo "<td>".$vente['NomV']."</td>";
+        echo "<td>"."<a href='../controllers/venteResponsable_controller.php?CodeV=" . $vente['CodeV'] . "'><button type='button'>Gérer vente</button></a></td>";
+        echo "</tr>";
     }
-    echo "</ul>";
+    echo "</table>";
 } else
     echo "pas de ventes créé";
 ?>
@@ -23,10 +23,24 @@ if (!empty($ventes)) {
 <br>
 
 <form action="../controllers/mesVentes_controller.php" method="post">
-    nom <input type="text" name="nomV" placeholder="nom de la vente..."><br>
-    date <input type="text" name="dateV" placeholder="date et heure de la vente..."><br>
-    temps début <input type="text" name="heureDV" placeholder="heure de début de la vente"><br>
-    temps fin <input type="text" name="heureFV" placeholder="heure de fin de la vente"><br>
+    <table>
+        <tr>
+            <td>nom</td>
+            <td><input type="text" name="nomV" placeholder="nom de la vente..."></td>
+        </tr>
+        <tr>
+            <td>date</td>
+            <td><input type="text" name="dateV" placeholder="date et heure de la vente..."></td>
+        </tr>
+        <tr>
+            <td>temps début</td>
+            <td><input type="text" name="heureDV" placeholder="heure de début de la vente"></td>
+        </tr>
+        <tr>
+            <td>temps fin</td>
+            <td><input type="text" name="heureFV" placeholder="heure de fin de la vente"></td>
+        </tr>
+    </table>
     <button type="submit" name="btnAjouterVente">ajouter vente</button>
 </form>
 

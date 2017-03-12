@@ -28,13 +28,21 @@ if (isset($_POST['btnModifieVente'])) {
     $message = "modification enrégistrées";
 }
 
+if (isset($_POST['btnAjoutProduit'])) {
+    $codePr = $_POST['produitNonVendu'];
+
+    addProduitAuVente($codePr, $codeV);
+    $message = "produit ajouté";
+}
+
 if (isset($_POST['btnSupprimerProduitVente'])) {
     $codePr = $_POST['CodePr'];
 
-    supprimerPRoduitDeLaVente($codePr, $codeV);
+    supprimerProduitDeLaVente($codePr, $codeV);
     $message = "produit enlèver";
 }
 
+$produitsNonVendu = getProduitNonVendu($codeV);
 $produits = getProduitsDeLaVente($codeV);
 
 include("../views/venteResponsable_view.php");

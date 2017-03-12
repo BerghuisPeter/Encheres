@@ -208,11 +208,41 @@ function getProduitsDeLaVente($codeV)
     return $resultat;
 }
 
-function supprimerPRoduitDeLaVente($idProduit, $idVente)
+function supprimerProduitDeLaVente($idProduit, $idVente)
 {
     $conn = connexionDB();
 
     $stmt = $conn->prepare("DELETE FROM vendre WHERE CodeV = :idVente AND CodePr = :idProduit");
+    $stmt->bindParam(':idProduit', $idProduit);
+    $stmt->bindParam(':idVente', $idVente);
+
+    $stmt->execute();
+
+    $stmt = null;
+    $conn = null;
+}
+
+function getProduitNonVendu($codeV)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("SELECT * FROM produit WHERE produit.CodePr NOT IN (SELECT vendre.CodePr FROM vendre WHERE vendre.CodeV = ".$codeV.");");
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetchAll();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
+
+function addProduitAuVente($idProduit, $idVente)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("INSERT INTO vendre (CodeV, CodePr) VALUES (:idVente, :idProduit)");
     $stmt->bindParam(':idProduit', $idProduit);
     $stmt->bindParam(':idVente', $idVente);
 
