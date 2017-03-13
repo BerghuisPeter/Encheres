@@ -3,6 +3,7 @@
     <title>Créer Profile</title>
 </head>
 <body>
+<a href="../controllers/accueil_controller.php">retour</a>
 <form action="../controllers/inscrire_controller.php" method="post">
     <input type="text" name="nom" placeholder="nom..." value="<?php if (isset($_POST['nom'])) {
         echo $nom;

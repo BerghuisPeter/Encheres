@@ -3,6 +3,7 @@
     <title><?php echo $nomV ?></title>
 </head>
 <body>
+<a href="../controllers/mesVentes_controller.php">retour</a>
 <h1><?php echo $nomV ?></h1>
 
 <form action="../controllers/venteResponsable_controller.php?CodeV=<?php echo $codeV ?>" method="post">

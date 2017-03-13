@@ -13,17 +13,15 @@ $message = "";
 
 if (isset($_POST['nom'])){ $nom = $_POST['nom'];}
 if (isset($_POST['prenom'])){ $prenom = $_POST['prenom'];}
-if (isset($_POST['email'])){ $email = $_POST['email'];}
 if (isset($_POST['oldPwd'])){ $oldPwd = $_POST['oldPwd'];}
 if (isset($_POST['newPwd'])){ $newPwd = $_POST['newPwd'];}
 
 
-if (isset($_POST['btnValiderChangements']) && $oldPwd != "")
+if (isset($_POST['btnValiderChangements']))
 {
-    echo hashPwd($newPwd);
     if (verifieMotDePasse($login, $oldPwd))
     {
-        updateProfil($idSession, $nom, $prenom, $email, $newPwd);
+        updateProfil($idSession, $nom, $prenom, $newPwd);
         $message = "Modifications enrégistrer";
     }
     else

@@ -258,10 +258,9 @@ function updateProfil($codeP, $nom, $prenom, $newPwd)
 
     if ($newPwd == "")
         $stmt = $conn->prepare("UPDATE personne SET NomP=:nom, PrenomP=:prenom WHERE CodeP = :codeP");
+
     else {
         $mdp = hashPwd($newPwd);
-        echo $newPwd."<br>";
-        echo $mdp;
         $stmt = $conn->prepare("UPDATE personne SET NomP=:nom, PrenomP=:prenom, MdpP=:mdp WHERE CodeP = :codeP");
         $stmt->bindParam(':mdp', $mdp);
         $_SESSION['MdpP'] = $mdp;
