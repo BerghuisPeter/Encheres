@@ -278,3 +278,19 @@ function updateProfil($codeP, $nom, $prenom, $newPwd)
     $stmt = null;
     $conn = null;
 }
+
+function getProduits()
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("SELECT * FROM produit, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND DateV = CURDATE();");
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetchAll();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
