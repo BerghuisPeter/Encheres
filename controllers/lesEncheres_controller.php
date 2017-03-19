@@ -6,7 +6,7 @@ include "../Model.php";
 
 include("../views/lesEncheres_view.php");
 
-$produits = getProduits();
+$produits = getProduitsEnVente();
 
 include ("../views/produits_view.php");
 

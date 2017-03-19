@@ -279,11 +279,12 @@ function updateProfil($codeP, $nom, $prenom, $newPwd)
     $conn = null;
 }
 
-function getProduits()
+function getProduitsEnVente()
 {
     $conn = connexionDB();
 
-    $stmt = $conn->prepare("SELECT * FROM produit, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND DateV = CURDATE();");
+    // ToDo get last bid value too.
+    $stmt = $conn->prepare("SELECT * FROM produit, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND DateV = CURDATE() AND HeureFV > CURRENT_TIME;");
 
     $stmt->execute();
 
