@@ -295,3 +295,41 @@ function getProduitsEnVente()
 
     return $resultat;
 }
+
+function getProduit($codePr)
+{
+    $conn = connexionDB();
+
+    $stmt = $conn->prepare("SELECT * FROM produit, personne, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND produit.CodePr = " . $codePr . " GROUP BY produit.CodePr;");
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
+
+function getDernierEncher($codeV, $codePr)
+{
+    $conn = connexionDB();
+
+
+    $stmt = $conn->prepare("SELECT PrixE FROM encherir WHERE encherir.PrixE = (SELECT MAX(PrixE) FROM encherir WHERE encherir.CodePr = " . $codePr . " AND encherir.CodeV = " . $codeV . ");");
+
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    $stmt = null;
+    $conn = null;
+
+    return $resultat;
+}
+
+function encherir($prix, $codeV, $codePr, $codeP)
+{
+
+}
