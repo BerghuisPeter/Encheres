@@ -5,7 +5,8 @@ session_start();
 include "../Model.php";
 
 $message = "";
-$produit = getProduit($_REQUEST['CodePr']);
+$produit = getProduit($_GET['CodePr']);
+$codeV = $_GET['CodeV'];
 $dernierEncher = getDernierEncher($produit['CodeV'], $produit['CodePr']);
 
 if (empty($dernierEncher))
@@ -16,10 +17,12 @@ else
 
 if (isset($_POST['btnEncherir'])) {
     $valeurMinimale = $_POST['valeurMinimale'];
-    if ($_POST['encher'] == "" || $_POST['encher'] <= $valeurMinimale) {
+    if ($_POST['encher'] == "" || $_POST['encher'] <= $valeurMinimale)
         $message = "veuillez saisir une valeur supérieur à " . $valeurMinimale;
-    } else {
 
+    else {
+        insertEncher($_POST['encher'], $codeV, $produit['CodePr']);
+        $message = "Votre encher est enregistré!";
     }
 }
 

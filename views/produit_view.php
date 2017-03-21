@@ -11,7 +11,8 @@
     <hr>
 
     <div>
-        <form action="../controllers/produit_controller.php?CodePr=<?php echo $_REQUEST['CodePr'] ?>" method="post">
+        <form action="../controllers/produit_controller.php?CodePr=<?php echo $_GET['CodePr'] . "&CodeV=" . $_GET['CodeV'] ?>"
+              method="post">
             dernièr encher: <?php echo $dernierPrixEncher . " €" ?><br>
             <input type="text" name="valeurMinimale" value="<?php echo $dernierPrixEncher ?>" hidden>
             <input type="text" name="encher"

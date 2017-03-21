@@ -329,7 +329,21 @@ function getDernierEncher($codeV, $codePr)
     return $resultat;
 }
 
-function encherir($prix, $codeV, $codePr, $codeP)
+function insertEncher($prix, $codeV, $codePr)
 {
+    $conn = connexionDB();
 
+    $stmt = $conn->prepare("INSERT INTO `encherir`(`CodePar`, `CodePr`, `CodeV`, `HeureE`, `PrixE`) VALUES (:CodePar, :CodePr, :CodeV, :HeureE, :PrixE )");
+    $stmt->bindParam(':CodePar', $_SESSION['CodeP']);
+    $stmt->bindParam(':CodePr', $codePr);
+    $stmt->bindParam(':CodeV', $codeV);
+    $date = new DateTime();
+    $time = $date->format("H:i:s");
+    $stmt->bindParam(':HeureE', $time);
+    $stmt->bindParam(':PrixE', $prix);
+
+    $stmt->execute();
+
+    $stmt = null;
+    $conn = null;
 }

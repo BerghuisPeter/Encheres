@@ -16,7 +16,7 @@
             $interval = $tempsFuture->diff($dateAujourdhui);
             echo "<td>".$interval->format("%h h %i min")."</td>";
             echo "<td><img src='../".$produit['PhotoPr']."' height='100px'></td>";
-            echo "<td><a href='../controllers/produit_controller.php?CodePr=" . $produit['CodePr'] . "'><button>voir Produit</button></a></td>";
+            echo "<td><a href='../controllers/produit_controller.php?CodePr=" . $produit['CodePr'] . "&CodeV=" . $produit['CodeV'] . "'><button>voir Produit</button></a></td>";
 
             echo "</tr>";
         }
