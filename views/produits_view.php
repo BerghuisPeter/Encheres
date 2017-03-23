@@ -3,14 +3,14 @@
     if (!empty($produits))
     {
         echo "<table>";
-        echo "<tr><th>Titre</th><th>prix initial</th><th>vente termine dans</th><th>image</th><th>bouton</th></tr>";
+        echo "<tr><th>Titre</th><th>dernièr Encher</th><th>vente termine dans</th><th>image</th><th>bouton</th></tr>";
         foreach ($produits as $produit)
         {
             echo "<tr>";
 
 
             echo "<td>".$produit['NomPr']."</td>";
-            echo "<td>".$produit['PrixInitial']." €</td>";
+            echo "<td>".$produit['PrixE']." €</td>";
             $dateAujourdhui = new DateTime();
             $tempsFuture = new DateTime(date_format($dateAujourdhui, 'Y-m-d')." ".$produit['HeureFV']);
             $interval = $tempsFuture->diff($dateAujourdhui);

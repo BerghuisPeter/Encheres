@@ -7,10 +7,10 @@ include "../Model.php";
 $message = "";
 $produit = getProduit($_GET['CodePr']);
 $codeV = $_GET['CodeV'];
-$dernierEncher = getDernierEncher($produit['CodeV'], $produit['CodePr']);
+$dernierEncher = getDernierEncher($codeV, $produit['CodePr']);
 
 if (empty($dernierEncher))
-    $dernierPrixEncher = $dernierEncher['PrixE'];
+    $dernierPrixEncher = $produit['PrixInitial'];
 else
     $dernierPrixEncher = $dernierEncher['PrixE'];
 
@@ -23,6 +23,8 @@ if (isset($_POST['btnEncherir'])) {
     else {
         insertEncher($_POST['encher'], $codeV, $produit['CodePr']);
         $message = "Votre encher est enregistré!";
+        $dernierEncher = getDernierEncher($codeV, $produit['CodePr']);
+        $dernierPrixEncher = $dernierEncher['PrixE'];
     }
 }
 
