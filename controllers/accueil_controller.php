@@ -11,7 +11,7 @@ if (!isset($_SESSION['CodeP']))
 $nom = $_SESSION["NomP"];
 $prenom = $_SESSION["PrenomP"];
 
-include("../views/accueileConnecte_view.php");
+include("../views/accueilConnecte_view.php");
 
 switch ($_SESSION['RoleP']) {
     case "participant":

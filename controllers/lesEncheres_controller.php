@@ -15,7 +15,7 @@ include("../views/lesEncheres_view.php");
 $produits = getProduitsEnVente();
 
 
-include ("../views/produits_view.php");
+include("../views/lesEncheres_view.php");
 
 ?>
 

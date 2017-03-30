@@ -3,7 +3,7 @@
     <title>accueil</title>
 </head>
 <body>
-<h1>☭ bienvenue a l'accueil ☭</h1>
+<h1>bienvenue a l'accueil</h1>
 <br>
 <a href="../controllers/connexion_controller.php">
     <button>se connecter</button>
