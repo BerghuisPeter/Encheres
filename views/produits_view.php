@@ -10,7 +10,14 @@
 
 
             echo "<td>".$produit['NomPr']."</td>";
-            echo "<td>".$produit['PrixE']." €</td>";
+            $dernierEncherQuery = getDernierEncher($produit['CodeV'], $produit['CodePr']);
+
+            if (empty($dernierEncherQuery))
+                $dernierEncher = $produit['PrixInitial'];
+            else
+                $dernierEncher = $dernierEncherQuery['PrixE'];
+
+            echo "<td>" . $dernierEncher . " €</td>";
             $dateAujourdhui = new DateTime();
             $tempsFuture = new DateTime(date_format($dateAujourdhui, 'Y-m-d')." ".$produit['HeureFV']);
             $interval = $tempsFuture->diff($dateAujourdhui);
@@ -30,5 +37,3 @@
 
 
 ?>
-
-

@@ -12,6 +12,7 @@ if (!empty($ventes)) {
     foreach ($ventes as $vente) {
         echo "<tr>";
         echo "<td>".$vente['NomV']."</td>";
+        echo "<td>" . $vente['DateV'] . "</td>";
         echo "<td>"."<a href='../controllers/venteResponsable_controller.php?CodeV=" . $vente['CodeV'] . "'><button type='button'>Gérer vente</button></a></td>";
         echo "</tr>";
     }
@@ -42,6 +43,7 @@ if (!empty($ventes)) {
             <td><input type="text" name="heureFV" placeholder="heure de fin de la vente"></td>
         </tr>
     </table>
+    <?php echo $message . "<br>"; ?>
     <button type="submit" name="btnAjouterVente">ajouter vente</button>
 </form>
 

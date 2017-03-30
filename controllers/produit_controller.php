@@ -4,6 +4,12 @@ session_start();
 
 include "../Model.php";
 
+if (isset($_SESSION['CodeP'])) {
+    if ($_SESSION['RoleP'] != "participant")
+        header("Location: accueil_controller.php");
+} else
+    header("Location: connexion_controller.php");
+
 $message = "";
 $produit = getProduit($_GET['CodePr']);
 $codeV = $_GET['CodeV'];

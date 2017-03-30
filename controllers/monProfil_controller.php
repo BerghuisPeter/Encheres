@@ -4,6 +4,10 @@ session_start();
 
 include "../Model.php";
 
+if (!isset($_SESSION['CodeP']))
+    header("Location: connexion_controller.php");
+
+
 $idSession = $_SESSION['CodeP'];
 $nom = $_SESSION['NomP'];
 $prenom = $_SESSION['PrenomP'];

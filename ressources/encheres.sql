@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2017 at 02:59 PM
+-- Generation Time: Mar 30, 2017 at 06:45 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.4
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `encheres`
 --
+CREATE DATABASE IF NOT EXISTS `encheres` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `encheres`;
 
 -- --------------------------------------------------------
 
@@ -54,9 +56,11 @@ CREATE TABLE `encherir` (
 --
 
 INSERT INTO `encherir` (`CodePar`, `CodePr`, `CodeV`, `HeureE`, `PrixE`) VALUES
+(7, 1, 1, '11:58:40.000', 152),
 (7, 1, 1, '13:00:00.000', 150),
 (7, 2, 1, '14:23:09.040', 22),
-(7, 2, 1, '15:00:00.000', 65);
+(7, 2, 1, '15:00:00.000', 65),
+(7, 2, 3, '18:44:56.000', 30);
 
 -- --------------------------------------------------------
 
@@ -72,7 +76,7 @@ CREATE TABLE `personne` (
   `EmailP` varchar(60) DEFAULT NULL,
   `LoginP` varchar(45) DEFAULT NULL,
   `MdpP` varchar(97) DEFAULT NULL,
-  `RoleP` enum('propriétaire','participant','responsable','administrateur') DEFAULT 'propriétaire'
+  `RoleP` enum('propriétaire','participant','responsable','administrateur') DEFAULT 'participant'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -107,7 +111,7 @@ CREATE TABLE `produit` (
 INSERT INTO `produit` (`CodePr`, `NomPr`, `PhotoPr`, `PrixInitial`, `CodeProp`) VALUES
 (1, 'dank meme - king rabbit', 'ressources/images/Capture.PNG', 50, 6),
 (2, 'dank meme - pepe', 'ressources/images/pepe.jpg', 20, 5),
-(3, 'dank meme - troll face', 'ressources/images/troll.jpg', 10, 6);
+(3, 'dank meme - troll face', 'ressources/images/troll.png', 10, 6);
 
 -- --------------------------------------------------------
 
@@ -127,7 +131,9 @@ CREATE TABLE `vendre` (
 
 INSERT INTO `vendre` (`CodeV`, `CodePr`) VALUES
 (1, 1),
-(1, 2);
+(1, 2),
+(3, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -150,7 +156,8 @@ CREATE TABLE `vente` (
 --
 
 INSERT INTO `vente` (`CodeV`, `DateV`, `NomV`, `HeureDV`, `HeureFV`, `CodeResp`) VALUES
-(1, '2017-03-20', 'venteTest1', '12:00:00.000', '23:59:00.000', 5);
+(1, '2017-03-21', 'venteTest1', '12:00:00.000', '13:59:00.000', 5),
+(3, '2017-03-30', 'venteTest2', '12:00:00.000', '19:30:00.000', 5);
 
 --
 -- Indexes for dumped tables
@@ -210,7 +217,7 @@ ALTER TABLE `vente`
 -- AUTO_INCREMENT for table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `CodeP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `CodeP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `produit`
 --
@@ -220,7 +227,7 @@ ALTER TABLE `produit`
 -- AUTO_INCREMENT for table `vente`
 --
 ALTER TABLE `vente`
-  MODIFY `CodeV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CodeV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

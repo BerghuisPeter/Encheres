@@ -283,7 +283,7 @@ function getProduitsEnVente()
 {
     $conn = connexionDB();
 
-    $stmt = $conn->prepare("SELECT produit.CodePr, produit.NomPr, produit.PrixInitial, produit.PhotoPr, vente.HeureFV, vente.CodeV, encherir.PrixE FROM produit, vendre, vente, encherir WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND encherir.PrixE = (SELECT MAX(PrixE) FROM encherir WHERE encherir.CodePr = produit.CodePr AND encherir.CodeV = vente.CodeV ) AND DateV = CURDATE() AND HeureFV > CURRENT_TIME;");
+    $stmt = $conn->prepare("SELECT produit.CodePr, produit.NomPr, produit.PrixInitial, produit.PhotoPr, vente.HeureFV, vente.CodeV FROM produit, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND DateV = CURRENT_DATE AND HeureFV > CURRENT_TIME;");
     $stmt->execute();
 
     $resultat = $stmt->fetchAll();
@@ -345,20 +345,4 @@ function insertEncher($prix, $codeV, $codePr)
 
     $stmt = null;
     $conn = null;
-}
-
-function getMesEncheres($codeP)
-{
-    $conn = connexionDB();
-
-    $stmt = $conn->prepare("SELECT * FROM `encherir` WHERE CodePar = ".$codeP);
-
-    $stmt->execute();
-
-    $resultat = $stmt->fetch();
-
-    $stmt = null;
-    $conn = null;
-
-    return $resultat;
 }

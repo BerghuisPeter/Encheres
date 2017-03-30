@@ -3,9 +3,13 @@ session_start();
 
 include "../Model.php";
 
-if ($_SESSION['RoleP'] != "responsable") {
-    header("Location: accueil_controller.php");
+if (isset($_SESSION['CodeP'])) {
+    if ($_SESSION['RoleP'] != "responsable")
+        header("Location: accueil_controller.php");
+} else {
+    header("Location: connexion_controller.php");
 }
+
 
 $codeV = $_REQUEST['CodeV'];
 $message = "";
