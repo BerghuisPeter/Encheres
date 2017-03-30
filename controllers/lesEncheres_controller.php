@@ -10,8 +10,6 @@ if (isset($_SESSION['CodeP'])) {
 } else
     header("Location: connexion_controller.php");
 
-include("../views/lesEncheres_view.php");
-
 $produits = getProduitsEnVente();
 
 
