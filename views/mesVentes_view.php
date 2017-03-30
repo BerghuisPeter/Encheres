@@ -32,7 +32,7 @@ if (!empty($ventes)) {
         </tr>
         <tr>
             <td>date</td>
-            <td><input type="text" name="dateV" placeholder="date et heure de la vente..."></td>
+            <td><input type="text" name="dateV" placeholder="date de la vente..."></td>
         </tr>
         <tr>
             <td>temps début</td>
