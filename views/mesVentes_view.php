@@ -18,7 +18,7 @@ if (!empty($ventes)) {
     }
     echo "</table>";
 } else
-    echo "pas de ventes créé";
+    echo "pas de vente créé";
 ?>
 
 <hr/>

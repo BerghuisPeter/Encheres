@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>accueille</title>
+    <title>accueil</title>
 </head>
 <body>
 <h1>bienvenue à l'accueil <?php echo $nom . " " . $prenom ?></h1>

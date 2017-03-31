@@ -26,14 +26,14 @@ if (isset($_POST['btnValiderChangements']))
     if (verifieMotDePasse($login, $oldPwd))
     {
         updateProfil($idSession, $nom, $prenom, $newPwd);
-        $message = "Modifications enrégistrer";
+        $message = "Modifications enregistré";
     }
     else
     {
-        $message = "votre mot de passe actuelle ne correspond pas avec le mot de passe trouvé dans notre système";
+        $message = "votre mot de passe actuel ne correspond pas avec le mot de passe trouvé dans notre système";
     }
 }
 else
-    $message = "veiller rentrer votre mot de passe actuelle pour confirmer les changements";
+    $message = "veuillez rentrer votre mot de passe actuel pour confirmer les changements";
 
 include ("../views/monProfil_view.php");

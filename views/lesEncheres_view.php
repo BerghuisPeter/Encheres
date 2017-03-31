@@ -12,7 +12,7 @@
 
 if (!empty($produits)) {
     echo "<table>";
-    echo "<tr><th>Titre</th><th>dernièr Encher</th><th>vente termine dans</th><th>image</th><th>bouton</th></tr>";
+    echo "<tr><th>Titre</th><th>dernière Enchère</th><th>vente terminée dans</th><th>image</th><th>bouton</th></tr>";
     foreach ($produits as $produit) {
         echo "<tr>";
 
@@ -37,7 +37,7 @@ if (!empty($produits)) {
     }
     echo "</table>";
 } else {
-    echo "aucune produits en vente pour le moment";
+    echo "aucun produits en vente pour le moment";
 }
 
 ?>

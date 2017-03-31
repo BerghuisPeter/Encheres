@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Créer Profile</title>
+    <title>Créer Profil</title>
 </head>
 <body>
 <a href="../controllers/accueil_controller.php">retour</a>

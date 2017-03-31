@@ -28,7 +28,7 @@ if (isset($_POST['btnInscrire'])) {
         $email == "" ||
         $mdp == ""
     )
-        $errorMessage = " toutes les champs doivent etre remplis";
+        $errorMessage = " tous les champs doivent être remplis";
     else {
         $emailPresent = verifieSiEmailPresentDansLaBDD($email);
         $loginPresent = verifieSiLoginPresentDansLaBDD($login);
@@ -52,7 +52,7 @@ if (isset($_POST['btnInscrire'])) {
             $errorMessage = "Votre email est déjà présent dans la bdd.<br/>";
 
         if ($loginPresent)
-            $errorMessage = $errorMessage . "Ce login et déjà prise.<br/>";
+            $errorMessage = $errorMessage . "Ce login et déjà pris.<br/>";
     }
 }
 

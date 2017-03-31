@@ -15,7 +15,7 @@ if (isset($_POST['btnConnecter'])) {
         $mdp = $_POST['mdp'];
 
     if ($mdp == "" || $login == "")
-        $errorMessage = "le login et mdps ne peuvent pas etre vide";
+        $errorMessage = "le login et mdp ne peuvent pas etre vide";
     else {
         if (verifieMotDePasse($login, $mdp)) {
             $personne = getPersonne($login);
@@ -31,7 +31,7 @@ if (isset($_POST['btnConnecter'])) {
             header("Location: accueil_controller.php");
             die();
         } else
-            $errorMessage = "Nope, mdp ou login incorect";
+            $errorMessage = "mdp ou login incorrect";
     }
 }
 

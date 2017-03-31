@@ -37,13 +37,13 @@ if (isset($_POST['btnAjouterVente'])) {
         $heureDV == "" ||
         $heureFV == ""
     )
-        $message = "veuillez vérifier que tous les champs ne sont pas vides";
+        $message = "veuillez vérifier que tous les champs ne soient pas vides";
 
     if ($okHeures) {
         insertVente($nomV, $dateV, $heureDV, $heureFV, $_SESSION['CodeP']);
         $message = "vente ajouté!";
     } else {
-        $message = "Les horraires doivent etre du type HH:MM (ex: 06:30)";
+        $message = "Les horraires doivent être du type HH:MM (ex: 06:30)";
     }
 
 }

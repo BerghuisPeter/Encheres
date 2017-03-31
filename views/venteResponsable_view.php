@@ -43,10 +43,10 @@
                 echo "<option value='".$produitNonVendu['CodePr']."'>".$produitNonVendu['NomPr']." - ".$produitNonVendu['PrixInitial']."</option>";
             }
             echo "</select>  ";
-            echo "<button type='submit' name='btnAjoutProduit'>ajouter produit au vente</button>";
+            echo "<button type='submit' name='btnAjoutProduit'>ajouter produit à la vente</button>";
         }
         else
-            echo "aucun produit disponible ou ils font tous partie de la vente déja";
+            echo "aucun produit disponible ou ils font tous déjà partie de la vente";
     ?>
 </form>
 

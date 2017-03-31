@@ -43,7 +43,7 @@ if (isset($_POST['btnSupprimerProduitVente'])) {
     $codePr = $_POST['CodePr'];
 
     supprimerProduitDeLaVente($codePr, $codeV);
-    $message = "produit enlèver";
+    $message = "produit enlevé";
 }
 
 $produitsNonVendu = getProduitNonVendu($codeV);

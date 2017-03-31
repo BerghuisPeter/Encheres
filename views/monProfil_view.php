@@ -14,8 +14,14 @@
             </tr>
             <tr><td>nom</td><td><input type="text" name="nom" value="<?php echo $nom ?>"></td></tr>
             <tr><td>prenom</td><td><input type="text" name="prenom" value="<?php echo $prenom ?>"></td></tr>
-            <tr><td>nouvelle mot de passe</td><td><input type="password" name="newPwd"></td></tr>
-            <tr><td>mot de passe actuelle</td><td><input type="text" name="oldPwd"></td></tr>
+            <tr>
+                <td>nouveau mot de passe</td>
+                <td><input type="password" name="newPwd"></td>
+            </tr>
+            <tr>
+                <td>mot de passe actuel</td>
+                <td><input type="text" name="oldPwd"></td>
+            </tr>
         </table>
         <button type="submit" name="btnValiderChangements">valider changements</button>
     </form>

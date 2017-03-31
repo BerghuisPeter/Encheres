@@ -11,7 +11,7 @@ if (isset($_SESSION['CodeP'])) {
     header("Location: connexion_controller.php");
 
 $message = "";
-$produit = getProduit($_GET['CodePr']);
+$produit = getProduit($_GET['CodePr'], $_GET['CodeV']);
 $codeV = $_GET['CodeV'];
 $dernierEncher = getDernierEncher($codeV, $produit['CodePr']);
 
@@ -28,7 +28,7 @@ if (isset($_POST['btnEncherir'])) {
 
     else {
         insertEncher($_POST['encher'], $codeV, $produit['CodePr']);
-        $message = "Votre encher est enregistré!";
+        $message = "Votre enchère est enregistrée!";
         $dernierEncher = getDernierEncher($codeV, $produit['CodePr']);
         $dernierPrixEncher = $dernierEncher['PrixE'];
     }

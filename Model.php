@@ -295,11 +295,11 @@ function getProduitsEnVente()
     return $resultat;
 }
 
-function getProduit($codePr)
+function getProduit($codePr, $codeV)
 {
     $conn = connexionDB();
 
-    $stmt = $conn->prepare("SELECT * FROM produit, personne, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND produit.CodePr = " . $codePr . " GROUP BY produit.CodePr;");
+    $stmt = $conn->prepare("SELECT * FROM produit, personne, vendre, vente WHERE produit.CodePr = vendre.CodePr AND vendre.CodeV = vente.CodeV AND produit.CodePr = " . $codePr . " AND vente.CodeV = " . $codeV . " GROUP BY produit.CodePr;");
 
     $stmt->execute();
 
